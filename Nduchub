@@ -1,0 +1,2184 @@
+repeat
+    wait()
+until game:IsLoaded()
+repeat
+    wait()
+until game.ReplicatedStorage
+repeat
+    wait()
+until game.Players
+repeat
+    wait()
+until game.Players.LocalPlayer
+repeat
+    wait()
+until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+if not game:IsLoaded() then
+    local v1_ = Instance.new("Message", workspace)
+    v1_.Text = "Wait Game Loading"
+    game.Loaded:Wait()
+    v1_:Destroy()
+    task.wait(10)
+end
+if not game:IsLoaded() then
+    repeat
+        game.Loaded:Wait()
+    until game:IsLoaded()
+end
+if readfile and (writefile and (isfile and (isfolder and not isfile("ThunderZ Hub/Discord.txt")))) then
+    local v2_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
+    v2_.Prompt({
+        invite = "HhPm7gf24R",
+        name = "Nduc Hub"
+    })
+    v2_.Join("HhPm7gf24R")
+    writefile("ThunderZ Hub/Discord.txt", "plis join ma discord")
+end
+if not game:GetService("Players").LocalPlayer:FindFirstChild("assetsloaded").Value == true then
+    repeat
+        game.Loaded:Wait()
+    until game:GetService("Players").LocalPlayer:FindFirstChild("assetsloaded").Value == true
+end
+_G.Settings = {
+    Main = {
+        ["Farm Mode Position"] = 2,
+        ["Farm Mode"] = 1,
+        ["Enable Auto Farm"] = false,
+        ["Enable WaterWalk"] = true,
+        Oxygen = true,
+        ["Saved Position Coordinat"] = nil,
+        ["Range NPC"] = false,
+        BastiaryEvent = false,
+        TheDepthQuest = false,
+        SelectIslandTP = 1,
+        SelectSubTP = 1,
+        SelectNPCTP = 1,
+        SelectRodTP = 1,
+        SelectTotemTP = 1,
+        ["Sell Wait"] = 20
+    }
+}
+function LoadSettings()
+    if readfile and (writefile and (isfile and isfolder)) then
+        if not isfolder("ThunderZ Hub") then
+            makefolder("ThunderZ Hub")
+        end
+        if not isfolder("ThunderZ Hub/Fisch/") then
+            makefolder("ThunderZ Hub/Fisch/")
+        end
+        if isfile("ThunderZ Hub/Fisch/" .. game.Players.LocalPlayer.Name .. ".json") then
+            local v3_ = game:GetService("HttpService"):JSONDecode(readfile("ThunderZ Hub/Fisch/" .. game.Players.LocalPlayer.Name .. ".json"))
+            local v4_, v5_, v6_ = pairs(v3_)
+            while true do
+                local v7_
+                v6_, v7_ = v4_(v5_, v6_)
+                if v6_ == nil then
+                    break
+                end
+                _G.Settings[v6_] = v7_
+            end
+        else
+            writefile("ThunderZ Hub/Fisch/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
+        end
+    else
+        local _ = warn
+    end
+end
+function SaveSettings()
+    if readfile and (writefile and (isfile and isfolder)) then
+        if isfile("ThunderZ Hub/Fisch/" .. game.Players.LocalPlayer.Name .. ".json") then
+            game:GetService("HttpService"):JSONDecode(readfile("ThunderZ Hub/Fisch/" .. game.Players.LocalPlayer.Name .. ".json"))
+            local v8_, v9_, v10_ = pairs(_G.Settings)
+            local v11_ = {}
+            while true do
+                local v12_
+                v10_, v12_ = v8_(v9_, v10_)
+                if v10_ == nil then
+                    break
+                end
+                v11_[v10_] = v12_
+            end
+            writefile("ThunderZ Hub/Fisch/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(v11_))
+        else
+            LoadSettings()
+        end
+    else
+        local _ = warn
+    end
+end
+LoadSettings()
+if game:GetService("CoreGui"):FindFirstChild("ScreenGui") then
+    game:GetService("CoreGui"):FindFirstChild("ScreenGui"):Destroy()
+end
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    wait(1)
+    game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+end)
+if game:GetService("UserInputService").TouchEnabled or not game:GetService("UserInputService").KeyboardEnabled ~= false then
+    local v13_ = game.CoreGui:FindFirstChild("ThunderScreen")
+    if v13_ then
+        v13_:Destroy()
+    end
+    local v14_ = Instance.new("ScreenGui")
+    local v15_ = Instance.new("TextButton")
+    local v16_ = Instance.new("UICorner")
+    local v17_ = Instance.new("ImageLabel")
+    v14_.Name = "ThunderScreen"
+    v14_.Parent = game.CoreGui
+    v14_.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    v15_.Name = "ThunderToggleUI"
+    v15_.Parent = v14_
+    v15_.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+    v15_.BorderSizePixel = 0
+    v15_.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+    v15_.Size = UDim2.new(0, 50, 0, 50)
+    v15_.Font = Enum.Font.SourceSans
+    v15_.Text = ""
+    v15_.TextColor3 = Color3.fromRGB(0, 0, 0)
+    v15_.TextSize = 14
+    v15_.Draggable = true
+    v15_.MouseButton1Click:Connect(function()
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, 277, false, game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, 277, false, game)
+    end)
+    local v18_ = Instance.new("UIStroke")
+    v18_.Thickness = 3.2
+    v18_.Name = ""
+    v18_.Parent = v15_
+    v18_.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    v18_.LineJoinMode = Enum.LineJoinMode.Round
+    v18_.Color = Color3.fromRGB(255, 0, 0)
+    v18_.Transparency = 0.1
+    v16_.Name = "ThunderCornerUI"
+    v16_.Parent = v15_
+    v17_.Name = "MODILEMAGE"
+    v17_.Parent = v15_
+    v17_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    v17_.BackgroundTransparency = 1
+    v17_.BorderSizePixel = 0
+    v17_.Position = UDim2.new(0, 0, 0, 0)
+    v17_.Size = UDim2.new(0, 50, 0, 50)
+    v17_.Image = "http://www.roblox.com/asset/?id=9906600154"
+end
+spawn(function()
+    while true do
+        game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("afk"):FireServer(false)
+        task.wait(0.01)
+    end
+end)
+spawn(function()
+    pcall(function()
+        game:GetService("RunService").Stepped:Connect(function()
+            if _G.Settings.Main["Enable Auto Farm"] or _G.Settings.Main.BastiaryEvent then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local v19_ = Instance.new("BodyVelocity")
+                    v19_.Name = "BodyClip"
+                    v19_.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    v19_.MaxForce = Vector3.new(100000, 100000, 100000)
+                    v19_.Velocity = Vector3.new(0, 0, 0)
+                end
+            elseif game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+            end
+        end)
+    end)
+end)
+local v_u_20_ = "Instant"
+local v_u_21_ = 100
+local v_u_22_ = 1
+local v_u_23_ = 20
+function TeleportPlayer(p24_)
+    local v25_ = game.Players.LocalPlayer
+    local v26_ = (v25_.Character or v25_.CharacterAdded:Wait()):FindFirstChild("HumanoidRootPart")
+    if v26_ then
+        local v27_ = p24_.Position
+        if v_u_20_ == "Instant" then
+            v26_.CFrame = CFrame.new(v27_)
+            return
+        end
+        while v_u_22_ < (v26_.Position - v27_).Magnitude do
+            local v28_ = v26_.Position
+            local v29_ = (v27_ - v28_).Magnitude
+            local v30_ = v29_ < v_u_23_ and math.clamp(v29_ * 0.5, 5, v_u_21_) or v_u_21_
+            local v31_ = v28_ + (v27_ - v28_).Unit * v30_ * game:GetService("RunService").Heartbeat:Wait()
+            v26_.CFrame = CFrame.new(v31_)
+        end
+    end
+end
+local v_u_32_ = {
+    ["Lantern Guy"] = CFrame.new(- 35, - 247, 199),
+    Appraiser = CFrame.new(438, 151, 210),
+    Merlin = CFrame.new(- 918, 224, - 988),
+    Merchant = CFrame.new(460, 151, 231),
+    ["Jack Marrow"] = CFrame.new(- 2820, 214, 1516),
+    Witch = CFrame.new(398, 135, 317)
+}
+local v_u_33_ = {
+    Brinepool = CFrame.new(- 1789, - 143, - 3315),
+    ["Desolate Deep"] = CFrame.new(- 1662, - 214, - 2847),
+    ["Desolate Pocket"] = CFrame.new(- 1488, - 235, - 2856),
+    ["Keepers Altar"] = CFrame.new(1290, - 805, - 298),
+    MooseWood = CFrame.new(430, 147, 264),
+    ["Mushgrove Swamp"] = CFrame.new(2428, 132, - 689),
+    ["Deep Ocean"] = CFrame.new(- 4656, 135, 1758),
+    ["Roslit Bay"] = CFrame.new(- 1488, 138, 738),
+    ["Roslit Volcano"] = CFrame.new(- 1897, 165, 316),
+    Snowcap = CFrame.new(2606, 146, 2402),
+    Sunstone = CFrame.new(- 911, 135, - 1123),
+    Terrapin = CFrame.new(- 198, 143, 1926),
+    Vertigo = CFrame.new(- 103, - 515, 1138),
+    ["Statue of Sovereignty"] = CFrame.new(18, 159, - 1037),
+    ["Forsaken Shores"] = CFrame.new(- 2537, 152, 1596),
+    ["The Depths"] = CFrame.new(946, - 712, 1254),
+    ["Ancient Isle"] = CFrame.new(6066, 198, 320)
+}
+local v_u_34_ = {
+    ["Desolate Shop"] = CFrame.new(- 994, - 245, - 2723),
+    ["Enchant Altar"] = CFrame.new(1312, - 802, - 87),
+    Gamma = CFrame.new(2231, - 792, 1012),
+    ["Ancient Archives"] = CFrame.new(- 3160, - 741, 1678)
+}
+local v_u_35_ = {
+    ["Trident Rod (150k)"] = CFrame.new(- 1484, - 226, - 2202),
+    ["Kings Rod (120k)"] = CFrame.new(1379, - 807, - 302),
+    ["Magma Rod (Requiment Pufferfish)"] = CFrame.new(- 1847, 166, 161),
+    ["Destiny Rod (190k)"] = CFrame.new(988, 131, - 1238),
+    ["Nocturnal Rod (11k)"] = CFrame.new(- 144, - 515, 1142),
+    ["Reinforced Rod (20k)"] = CFrame.new(- 991, - 244, - 2693),
+    ["Magnet Rod (15k)"] = CFrame.new(- 197, 133, 1932),
+    ["Carbon Rod (2k)"] = CFrame.new(450, 151, 224),
+    ["Steady Rod (7k)"] = CFrame.new(- 1511, 142, 762),
+    ["Scurvy Rod (50k)"] = CFrame.new(- 141, - 512, 1145),
+    ["Aurora Rod (90k+500k)"] = CFrame.new(- 141, - 512, 1145),
+    ["Rod Of The Depths (750k)"] = CFrame.new(1703, - 903, 1443),
+    ["Relic Rod (8k)"] = CFrame.new(4096, 40, 28)
+}
+local v_u_36_ = {
+    ["Sundial Totem"] = CFrame.new(- 1147, 135, - 1074),
+    ["Smokescreen Totem"] = CFrame.new(2793, 140, - 629),
+    ["Windset Totem"] = CFrame.new(2852, 180, 2703),
+    ["Aurora Totem"] = CFrame.new(- 1811, - 137, - 3282),
+    ["Tempest Totem"] = CFrame.new(36, 135, 1946),
+    ["Eclipse Totem"] = CFrame.new(5946, 269, 890),
+    ["Meteor Totem"] = CFrame.new(- 1944.4, 275.7, 230.9)
+}
+local v37_, v38_, v39_ = pairs(v_u_36_)
+local v40_ = {}
+while true do
+    v39_ = v37_(v38_, v39_)
+    if v39_ == nil then
+        break
+    end
+    table.insert(v40_, v39_)
+end
+local v41_, v42_, v43_ = pairs(v_u_33_)
+local v44_ = {}
+while true do
+    v43_ = v41_(v42_, v43_)
+    if v43_ == nil then
+        break
+    end
+    table.insert(v44_, v43_)
+end
+local v45_, v46_, v47_ = pairs(v_u_35_)
+local v48_ = {}
+while true do
+    v47_ = v45_(v46_, v47_)
+    if v47_ == nil then
+        break
+    end
+    table.insert(v48_, v47_)
+end
+local v49_, v50_, v51_ = pairs(v_u_34_)
+local v52_ = {}
+while true do
+    v51_ = v49_(v50_, v51_)
+    if v51_ == nil then
+        break
+    end
+    table.insert(v52_, v51_)
+end
+local v53_, v54_, v55_ = pairs(v_u_32_)
+local v56_ = {}
+while true do
+    v55_ = v53_(v54_, v55_)
+    if v55_ == nil then
+        break
+    end
+    table.insert(v56_, v55_)
+end
+local v_u_57_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/ThundarZ/Welcome/refs/heads/main/Main/UI/Fluent/Library.lua"))()
+local v58_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/ThundarZ/Welcome/main/Main/UI/Fluent/SaveManager.lua"))()
+local v59_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/ThundarZ/Welcome/main/Main/UI/Fluent/Interface.lua"))()
+local v_u_60_ = v_u_57_:CreateWindow({
+    Title = "Nduc",
+    SubTitle = "Mobile & PC Version",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 360),
+    Acrylic = false,
+    Theme = "Black"
+})
+local v61_ = {
+    Main = v_u_60_:AddTab({
+        Title = "\239\191\189\239\191\189 Main",
+        Icon = "rbxassetid://88161224206829"
+    }),
+    RodPuki = v_u_60_:AddTab({
+        Title = "\239\191\189\239\191\189 Rod & Items",
+        Icon = "rbxassetid://88161224206829"
+    }),
+    NPC = v_u_60_:AddTab({
+        Title = "\239\191\189\239\191\189 NPC",
+        Icon = "user"
+    }),
+    Teleport = v_u_60_:AddTab({
+        Title = "\239\191\189\239\191\189 Teleport",
+        Icon = "rbxassetid://88161224206829"
+    }),
+    Settings = v_u_60_:AddTab({
+        Title = "\239\191\189\239\191\189 UI Settings",
+        Icon = "settings"
+    })
+}
+local v_u_62_ = v_u_57_.Options
+v58_:SetLibrary(v_u_57_)
+v59_:SetLibrary(v_u_57_)
+v_u_57_:Notify({
+    Title = "Nduc Hub",
+    Content = "Loading Script . . .",
+    Duration = 8
+})
+v61_.Main:AddParagraph({
+    Title = "More Features Coming Soon !",
+    Content = ""
+})
+v61_.Main:AddButton({
+    Title = "Join Discord",
+    Description = "new update will inform at Discord",
+    Callback = function()
+        local v63_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
+        v63_.Prompt({
+            invite = "HhPm7gf24R",
+            name = "ThunderZ Hub"
+        })
+        v63_.Join("HhPm7gf24R")
+        setclipboard("discord.gg/HhPm7gf24R")
+    end
+})
+local v64_ = v61_.Main:AddSection("[ Settings ]")
+local v65_ = ""
+if _G.Settings.Main["Saved Position Coordinat"] then
+    local v66_, v67_ = pcall(function()
+        return loadstring("return CFrame.new(" .. _G.Settings.Main["Saved Position Coordinat"] .. ")")()
+    end)
+    if v66_ and typeof(v67_) == "CFrame" then
+        v65_ = string.format("%d, %d, %d", math.floor(v67_.Position.X + 0.5), math.floor(v67_.Position.Y + 0.5), math.floor(v67_.Position.Z + 0.5))
+    else
+        warn("Gagal memuat posisi dari data yang disimpan!")
+    end
+end
+PosisiSekarang = v64_:AddParagraph({
+    Title = "Your Saved Position",
+    Content = v65_
+})
+v64_:AddButton({
+    Title = "Save Your Position",
+    Description = "It will save the current position you\'re standing on.",
+    Callback = function()
+        local v68_ = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if v68_ then
+            _G.Settings.Main["Saved Position Coordinat"] = tostring(v68_.CFrame)
+            local v69_ = v68_.Position
+            local v70_ = string.format("%d, %d, %d", math.floor(v69_.X + 0.5), math.floor(v69_.Y + 0.5), math.floor(v69_.Z + 0.5))
+            PosisiSekarang:SetDesc(v70_)
+            setclipboard(tostring(v68_.CFrame))
+            SaveSettings()
+        else
+            warn("HumanoidRootPart tidak ditemukan!")
+        end
+    end
+})
+v64_:AddDropdown("FarmMetode", {
+    Title = "Select Farm Metode",
+    Values = {
+        "Fast",
+        "Normal",
+        "Legit"
+    },
+    Multi = false,
+    Default = _G.Settings.Main["Farm Mode"]
+})
+v_u_62_.FarmMetode:OnChanged(function()
+    _G.Settings.Main["Farm Mode"] = v_u_62_.FarmMetode.Value
+    SaveSettings()
+end)
+v64_:AddDropdown("FarmModePosition", {
+    Title = "Select Position",
+    Values = {
+        "Safe Position",
+        "Current Position",
+        "Saved Position"
+    },
+    Multi = false,
+    Default = _G.Settings.Main["Farm Mode Position"]
+})
+v_u_62_.FarmModePosition:OnChanged(function()
+    _G.Settings.Main["Farm Mode Position"] = v_u_62_.FarmModePosition.Value
+    SaveSettings()
+end)
+local v71_ = v61_.Main:AddSection("[ World Event ]")
+Megalodon = v71_:AddParagraph({
+    Title = "Megalodon Status",
+    Content = ""
+})
+Serpent = v71_:AddParagraph({
+    Title = "The Depths - Serpent Status",
+    Content = ""
+})
+GreatHammerhead = v71_:AddParagraph({
+    Title = "Great Hammerhead Shark",
+    Content = ""
+})
+GreatWhite = v71_:AddParagraph({
+    Title = "Great White Shark",
+    Content = ""
+})
+WhaleShark = v71_:AddParagraph({
+    Title = "Whale Shark Status",
+    Content = ""
+})
+StrangeWhirlpool = v71_:AddParagraph({
+    Title = "Strange Whirlpool Status",
+    Content = ""
+})
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            local v72_, v73_, v74_ = pairs(game.Workspace.zones.fishing:GetChildren())
+            local v75_ = {}
+            while true do
+                local v76_
+                v74_, v76_ = v72_(v73_, v74_)
+                if v74_ == nil then
+                    break
+                end
+                if string.find(v76_.Name, "Megalodon") then
+                    table.insert(v75_, v76_)
+                end
+            end
+            if # v75_ <= 0 then
+                Megalodon:SetDesc("Not Spawn")
+            else
+                Megalodon:SetDesc("Spawn")
+            end
+            if game.Workspace.zones.fishing:FindFirstChild("The Depths - Serpent") then
+                Serpent:SetDesc("Spawn")
+            else
+                Serpent:SetDesc("Not Spawn")
+            end
+            if game.Workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark") then
+                GreatHammerhead:SetDesc("Spawn")
+            else
+                GreatHammerhead:SetDesc("Not Spawn")
+            end
+            if game.Workspace.zones.fishing:FindFirstChild("Great White Shark") then
+                GreatWhite:SetDesc("Spawn")
+            else
+                GreatWhite:SetDesc("Not Spawn")
+            end
+            if game.Workspace.zones.fishing:FindFirstChild("Whale Shark") then
+                WhaleShark:SetDesc("Spawn")
+            else
+                WhaleShark:SetDesc("Not Spawn")
+            end
+            if game.Workspace.zones.fishing:FindFirstChild("Isonade") then
+                StrangeWhirlpool:SetDesc("Spawn")
+            else
+                StrangeWhirlpool:SetDesc("Not Spawn")
+            end
+        end)
+    end
+end)
+local v_u_77_ = v71_:AddDropdown("WorldEventTPDropdownUI", {
+    Title = "Select World Event",
+    Description = "You Need Current Position to Auto Fish here",
+    Values = {
+        "Megalodon",
+        "Strange Whirlpool",
+        "Great Hammerhead Shark",
+        "Great White Shark",
+        "Whale Shark",
+        "The Depths - Serpent"
+    },
+    Multi = false,
+    Default = nil
+})
+local v78_ = v_u_77_
+v_u_77_.OnChanged(v78_, function(p79_)
+    SelectedWorldEvent = p79_
+    if SelectedWorldEvent ~= "Strange Whirlpool" then
+        if SelectedWorldEvent ~= "Great Hammerhead Shark" then
+            if SelectedWorldEvent ~= "Great White Shark" then
+                if SelectedWorldEvent ~= "Whale Shark" then
+                    if SelectedWorldEvent ~= "The Depths - Serpent" then
+                        if SelectedWorldEvent == "Megalodon" then
+                            local v80_ = Vector3.new(0, 50, 0)
+                            local v81_, v82_, v83_ = pairs(game.Workspace.zones.fishing:GetChildren())
+                            local v84_ = {}
+                            while true do
+                                local v85_
+                                v83_, v85_ = v81_(v82_, v83_)
+                                if v83_ == nil then
+                                    break
+                                end
+                                if string.find(v85_.Name, "Megalodon") then
+                                    table.insert(v84_, v85_)
+                                end
+                            end
+                            if # v84_ <= 0 then
+                                v_u_77_:SetValue(nil)
+                                local _ = v_u_57_.Notify
+                            else
+                                local v86_, v87_, v88_ = ipairs(v84_)
+                                while true do
+                                    local v89_
+                                    v88_, v89_ = v86_(v87_, v88_)
+                                    if v88_ == nil then
+                                        break
+                                    end
+                                    print("Found Megalodon-like object: " .. v89_.Name)
+                                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v89_.Position + v80_)
+                                end
+                            end
+                        end
+                    else
+                        local v90_ = Vector3.new(0, 50, 0)
+                        if not game.Workspace.zones.fishing:FindFirstChild("The Depths - Serpent") then
+                            v_u_77_:SetValue(nil)
+                            return v_u_57_:Notify({
+                                Title = "Nduc Hub",
+                                Content = "The Depths - Serpent not spawn yet ",
+                                Duration = 9
+                            })
+                        end
+                        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.zones.fishing["The Depths - Serpent"].Position + v90_)
+                        v_u_77_:SetValue(nil)
+                    end
+                else
+                    local v91_ = Vector3.new(0, 135, 0)
+                    if not game.Workspace.zones.fishing:FindFirstChild("Whale Shark") then
+                        v_u_77_:SetValue(nil)
+                        return v_u_57_:Notify({
+                            Title = "Nduc Hub",
+                            Content = "Whale Shark not spawn yet",
+                            Duration = 9
+                        })
+                    end
+                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.zones.fishing["Whale Shark"].Position + v91_)
+                    v_u_77_:SetValue(nil)
+                end
+            else
+                local v92_ = Vector3.new(0, 135, 0)
+                if not game.Workspace.zones.fishing:FindFirstChild("Great White Shark") then
+                    v_u_77_:SetValue(nil)
+                    return v_u_57_:Notify({
+                        Title = "Nduc Hub",
+                        Content = "Great White Shark not spawn yet",
+                        Duration = 9
+                    })
+                end
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.zones.fishing["Great White Shark"].Position + v92_)
+                v_u_77_:SetValue(nil)
+            end
+        else
+            local v93_ = Vector3.new(0, 135, 0)
+            if not game.Workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark") then
+                v_u_77_:SetValue(nil)
+                return v_u_57_:Notify({
+                    Title = "NducHub",
+                    Content = "Great Hammerhead Shark not spawn yet",
+                    Duration = 9
+                })
+            end
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.zones.fishing["Great Hammerhead Shark"].Position + v93_)
+            v_u_77_:SetValue(nil)
+        end
+    else
+        local v94_ = Vector3.new(25, 135, 25)
+        if not game.Workspace.zones.fishing:FindFirstChild("Isonade") then
+            v_u_77_:SetValue(nil)
+            return v_u_57_:Notify({
+                Title = "Nduc Hub",
+                Content = "Strange Whirlpool not spawn yet",
+                Duration = 9
+            })
+        end
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.zones.fishing.Isonade.Position + v94_)
+        v_u_77_:SetValue(nil)
+    end
+end)
+local v95_ = v61_.Main:AddSection("[ Main ]")
+v95_:AddToggle("EnableFarm", {
+    Title = "Enable Auto Fishing",
+    Default = _G.Settings.Main["Enable Auto Farm"]
+})
+v_u_62_.EnableFarm:OnChanged(function()
+    _G.Settings.Main["Enable Auto Farm"] = v_u_62_.EnableFarm.Value
+    SaveSettings()
+end)
+v_u_62_.FarmModePosition:OnChanged(function()
+    _G.Settings.Main["Farm Mode Position"] = v_u_62_.FarmModePosition.Value
+    SaveSettings()
+end)
+v95_:AddToggle("WaterWalk", {
+    Title = "Enable WaterWalk",
+    Default = _G.Settings.Main["Enable Auto Farm"]
+})
+v_u_62_.WaterWalk:OnChanged(function()
+    _G.Settings.Main["Enable WaterWalk"] = v_u_62_.WaterWalk.Value
+    local v96_ = workspace:FindFirstChild("zones"):FindFirstChild("fishing")
+    if v96_ then
+        local v97_, v98_, v99_ = ipairs(v96_:GetDescendants())
+        while true do
+            local v100_
+            v99_, v100_ = v97_(v98_, v99_)
+            if v99_ == nil then
+                break
+            end
+            if v100_:IsA("Part") then
+                v100_.CanCollide = _G.Settings.Main["Enable WaterWalk"]
+            end
+        end
+    end
+    SaveSettings()
+end)
+v95_:AddToggle("DisableOxygen", {
+    Title = "Disable Oxygen",
+    Default = _G.Settings.Main.Oxygen
+})
+v_u_62_.DisableOxygen:OnChanged(function()
+    _G.Settings.Main.Oxygen = v_u_62_.DisableOxygen.Value
+    game:GetService("Players").LocalPlayer.Character.client.oxygen.Disabled = _G.Settings.Main.Oxygen
+end)
+game:GetService("HttpService")
+local v101_ = game:GetService("RunService")
+game:GetService("VirtualInputManager")
+game:GetService("ReplicatedStorage")
+local v102_ = game:GetService("Players").LocalPlayer
+local _ = v102_.PlayerGui
+game:GetService("RunService")
+local v_u_103_ = game:GetService("Players").LocalPlayer
+local function v_u_105_()
+    if not v_u_103_.Character then
+        return false
+    end
+    local v104_ = v_u_103_.Character:FindFirstChildWhichIsA("Tool")
+    if v104_ then
+        v104_ = v_u_103_.Character:FindFirstChildWhichIsA("Tool").Name:lower():find("rod")
+    end
+    return v104_
+end
+local function v_u_111_()
+    local v106_ = v_u_103_.Backpack
+    local v107_, v108_, v109_ = ipairs(v106_:GetChildren())
+    while true do
+        local v110_
+        v109_, v110_ = v107_(v108_, v109_)
+        if v109_ == nil then
+            break
+        end
+        if v110_:IsA("Tool") and string.find(v110_.Name:lower(), "rod", 1, true) then
+            if v_u_103_.Character and v_u_103_.Character:FindFirstChild(v110_.Name) == nil then
+                v_u_103_.Character.Humanoid:EquipTool(v110_)
+            end
+            return v110_
+        end
+    end
+    return nil
+end
+function EquipItem(p_u_112_)
+    pcall(function()
+        if game.Players.LocalPlayer.Backpack:FindFirstChild(p_u_112_) then
+            local v113_ = game.Players.LocalPlayer.Backpack:FindFirstChild(p_u_112_)
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v113_)
+        end
+    end)
+end
+if game.workspace:FindFirstChild("SafePosition") then
+    game.workspace:FindFirstChild("SafePosition"):Destroy()
+end
+platform = Instance.new("Part")
+platform.Name = "SafePosition"
+platform.Size = Vector3.new(10, 0.5, 10)
+platform.Anchored = true
+platform.Transparency = 0
+platform.Material = "Neon"
+platform.Parent = game.workspace
+platform.Color = Color3.fromRGB(102, 51, 153)
+platform.CanCollide = true
+platform.Position = Vector3.new(1889, 130, - 3771)
+coroutine.resume(coroutine.create(function()
+    while wait() do
+        pcall(function()
+            wait(0.1)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(255, 0, 0)
+            }):Play()
+            wait(0.5)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(255, 155, 0)
+            }):Play()
+            wait(0.5)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(255, 255, 0)
+            }):Play()
+            wait(0.5)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(0, 255, 0)
+            }):Play()
+            wait(0.5)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(0, 255, 255)
+            }):Play()
+            wait(0.5)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(0, 155, 255)
+            }):Play()
+            wait(0.5)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(255, 0, 255)
+            }):Play()
+            wait(0.5)
+            game:GetService("TweenService"):Create(platform, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {
+                Color = Color3.fromRGB(255, 0, 155)
+            }):Play()
+            wait(0.5)
+        end)
+    end
+end))
+slebew = false
+function Mewing()
+    if v_u_105_() then
+        local v114_ = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):FindFirstChild("events")
+        if v114_ then
+            v114_ = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool").events:FindFirstChild("cast")
+        end
+        if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):FindFirstChild("events") then
+            game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool").events:FindFirstChild("reset")
+        end
+        local v115_ = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("shakeui")
+        local v116_ = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("reel")
+        if v114_ and not (v115_ or v116_) then
+            if _G.Settings.Main["Farm Mode"] == "Fast" or _G.Settings.Main["Farm Mode"] == "Normal" then
+                game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").events.cast:FireServer(100)
+            elseif _G.Settings.Main["Farm Mode"] == "Legit" then
+                game:GetService("VirtualInputManager"):SendMouseButtonEvent(55, 208, 0, true, game.Players.LocalPlayer.PlayerGui, 1)
+                wait(math.random(1, 1.1))
+                game:GetService("VirtualInputManager"):SendMouseButtonEvent(55, 208, 0, false, game.Players.LocalPlayer.PlayerGui, 1)
+            end
+        elseif v115_ then
+            if _G.Settings.Main["Farm Mode"] == "Fast" or _G.Settings.Main["Farm Mode"] == "Normal" then
+                if game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button then
+                    game:GetService("GuiService").SelectedObject = game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button
+                    game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.Visible = false
+                else
+                    game:GetService("GuiService").SelectedObject = nil
+                end
+                if game:GetService("GuiService").SelectedObject ~= game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button then
+                    return
+                end
+                game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.Visible = false
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+                game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+            elseif _G.Settings.Main["Farm Mode"] == "Legit" then
+                if game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button then
+                    game:GetService("GuiService").SelectedObject = game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button
+                else
+                    game:GetService("GuiService").SelectedObject = nil
+                end
+                if game:GetService("GuiService").SelectedObject ~= game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button then
+                    return
+                end
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+                task.wait(0.2)
+                game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+            end
+        elseif v116_ then
+            if _G.Settings.Main["Farm Mode"] ~= "Fast" then
+                if _G.Settings.Main["Farm Mode"] ~= "Normal" then
+                    if _G.Settings.Main["Farm Mode"] == "Legit" then
+                        repeat
+                            task.wait(0.25)
+                            game:GetService("Players").LocalPlayer.PlayerGui.reel.bar:FindFirstChild("playerbar").Position = game:GetService("Players").LocalPlayer.PlayerGui.reel.bar:FindFirstChild("fish").Position
+                        until not v116_
+                    end
+                else
+                    game:GetService("Players").LocalPlayer.PlayerGui.reel.bar:FindFirstChild("playerbar").Position = game:GetService("Players").LocalPlayer.PlayerGui.reel.bar:FindFirstChild("fish").Position
+                end
+            else
+                game:GetService("ReplicatedStorage").events:FindFirstChild("reelfinished"):FireServer(100, true)
+            end
+        end
+    else
+        v_u_111_()
+    end
+end
+spawn(function()
+    while task.wait() do
+        if _G.Settings.Main["Enable Auto Farm"] then
+            pcall(function()
+                if _G.Settings.Main["Farm Mode Position"] ~= "Safe Position" then
+                    if _G.Settings.Main["Farm Mode Position"] ~= "Current Position" then
+                        if _G.Settings.Main["Farm Mode Position"] == "Saved Position" then
+                            if _G.Settings.Main["Saved Position Coordinat"] then
+                                local v117_, v118_ = pcall(function()
+                                    return loadstring("return CFrame.new(" .. _G.Settings.Main["Saved Position Coordinat"] .. ")")()
+                                end)
+                                if v117_ and typeof(v118_) == "CFrame" then
+                                    local v119_ = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                                    if v119_ then
+                                        if (v118_.Position - v119_.Position).magnitude > 10 then
+                                            v119_.CFrame = v118_
+                                        else
+                                            Mewing()
+                                        end
+                                    else
+                                        warn("HumanoidRootPart tidak ditemukan!")
+                                    end
+                                else
+                                    warn("Gagal memuat CFrame yang valid! Periksa format string.")
+                                end
+                            else
+                                v_u_57_:Notify({
+                                    Title = "Nduc Hub",
+                                    Content = "Save Your Position First",
+                                    Duration = 9
+                                })
+                            end
+                        end
+                    else
+                        Mewing()
+                    end
+                elseif (CFrame.new(1889, 130, - 3771).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 5 then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").SafePosition.CFrame * CFrame.new(0, 4, 0)
+                else
+                    Mewing()
+                end
+            end)
+        end
+    end
+end)
+local v120_ = v61_.RodPuki:AddSection("[ Items ]")
+local v121_ = game:GetService("ReplicatedStorage").resources.items.items
+local v122_ = {}
+if v121_ then
+    local v123_, v124_, v125_ = ipairs(v121_:GetChildren())
+    while true do
+        local v126_, v127_ = v123_(v124_, v125_)
+        if v126_ == nil then
+            break
+        end
+        v125_ = v126_
+        if v127_:IsA("Folder") then
+            table.insert(v122_, v127_.Name)
+        end
+    end
+else
+    warn("Items folder not found")
+end
+local v_u_128_ = ""
+local v_u_129_ = 1
+v120_:AddDropdown("BukaItems", {
+    Title = "Item",
+    Values = v122_,
+    Multi = false,
+    Default = "None"
+})
+v_u_62_.BukaItems:OnChanged(function()
+    v_u_128_ = v_u_62_.BukaItems.Value
+    print("Selected item:", v_u_128_)
+end)
+v120_:AddInput("Input", {
+    Title = "Amount",
+    Default = "",
+    Placeholder = "Placeholder",
+    Numeric = false,
+    Finished = false,
+    Callback = function(p130_)
+        local v131_ = tonumber(p130_)
+        if v131_ and 0 < v131_ then
+            v_u_129_ = v131_
+            print("Selected amount:", v_u_129_)
+        else
+            warn("Invalid amount entered")
+        end
+    end
+})
+v120_:AddButton({
+    Title = "Buy selected item",
+    Description = "",
+    Callback = function()
+        if v_u_128_ ~= "" then
+            game:GetService("ReplicatedStorage").events.purchase:FireServer(v_u_128_, "Item", nil, v_u_129_)
+            print("Purchased", v_u_129_, v_u_128_)
+        else
+            warn("No item selected")
+        end
+    end
+})
+v120_:AddButton({
+    Title = "Unlock all Rods & Inf Money",
+    Description = "It will Unlock all rods in the game.",
+    Callback = function()
+        v_u_60_:Dialog({
+            Title = "!! WARNING !! IT WILL RESET STATS ",
+            Content = "But You will reset your all stats and getback to Level 1?",
+            Buttons = {
+                {
+                    Title = "Yes! i wanna all rods",
+                    Callback = function()
+                        print("")
+                        v_u_60_:Dialog({
+                            Title = "!! LAST WARN !! IT WILL RESET STATS",
+                            Content = "But You will reset your all stats and getback to Level 1?",
+                            Buttons = {
+                                {
+                                    Title = "Yes! PLEASE DO IT",
+                                    Callback = function()
+                                        (function()
+                                            local v132_ = game:GetService("ReplicatedStorage").resources.items.rods
+                                            if v132_ then
+                                                local v133_ = game:GetService("ReplicatedStorage").events.purchase
+                                                local v134_ = math.huge
+                                                local v135_, v136_, v137_ = ipairs(v132_:GetChildren())
+                                                while true do
+                                                    local v138_
+                                                    v137_, v138_ = v135_(v136_, v137_)
+                                                    if v137_ == nil then
+                                                        break
+                                                    end
+                                                    if v138_:IsA("Folder") then
+                                                        v133_:FireServer(v138_.Name, "Rod", nil, v134_)
+                                                    end
+                                                end
+                                            else
+                                                warn("Folder Rods not found")
+                                            end
+                                        end)()
+                                    end
+                                },
+                                {
+                                    Title = "No!, i dont wanna reset my Stats",
+                                    Callback = function()
+                                    end
+                                }
+                            }
+                        })
+                    end
+                },
+                {
+                    Title = "No!, i dont wanna reset my Stats",
+                    Callback = function()
+                    end
+                }
+            }
+        })
+        purchaseRods()
+        task.delay(1, purchaseRods)
+    end
+})
+local v139_ = v61_.RodPuki:AddSection("[ Quest ]")
+PancinganProgress = v139_:AddParagraph({
+    Title = "Progress Quest",
+    Content = ""
+})
+function AlphaWolf()
+    if v_u_105_() then
+        local v140_ = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):FindFirstChild("events")
+        if v140_ then
+            v140_ = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool").events:FindFirstChild("cast")
+        end
+        if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):FindFirstChild("events") then
+            game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool").events:FindFirstChild("reset")
+        end
+        local v141_ = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("shakeui")
+        local v142_ = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("reel")
+        if v140_ and not (v141_ or v142_) then
+            game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").events.cast:FireServer(100)
+        elseif v141_ then
+            if game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button then
+                game:GetService("GuiService").SelectedObject = game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button
+                game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.Visible = false
+            else
+                game:GetService("GuiService").SelectedObject = nil
+            end
+            if game:GetService("GuiService").SelectedObject ~= game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.button then
+                return
+            end
+            game:GetService("Players").LocalPlayer.PlayerGui.shakeui.safezone.Visible = false
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+            game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+        elseif v142_ then
+            game:GetService("ReplicatedStorage").events:FindFirstChild("reelfinished"):FireServer(100, true)
+        end
+    else
+        v_u_111_()
+    end
+end
+v139_:AddToggle("RodDepth", {
+    Title = "Complete The Depths Puzzle",
+    Description = "it Will Doing Full Puzzle Quest & Buy the Rod of The Depths",
+    Default = _G.Settings.Main.TheDepthQuest
+})
+v_u_62_.RodDepth:OnChanged(function()
+    _G.Settings.Main.TheDepthQuest = v_u_62_.RodDepth.Value
+end)
+spawn(function()
+    while task.wait() do
+        if _G.Settings.Main.TheDepthQuest then
+            pcall(function()
+                if game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Rods:FindFirstChild("Rod Of The Depths") then
+                    PancinganProgress:SetDesc("You Already Have Rod Of The Depths")
+                elseif game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Cache:FindFirstChild("Door.TheDepthsGate") then
+                    local v143_ = game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Inventory
+                    local v144_, v145_, v146_ = ipairs(v143_:GetChildren())
+                    local v147_ = false
+                    local v148_ = false
+                    local v149_ = false
+                    while true do
+                        local v150_
+                        v146_, v150_ = v144_(v145_, v146_)
+                        if v146_ == nil then
+                            break
+                        end
+                        if string.find(v150_.Name, "Enchant Relic") then
+                            v149_ = true
+                            if v150_:FindFirstChild("Mutation") then
+                                local v151_ = v150_.Mutation.Value
+                                v147_ = v147_ or v151_ == "Hexed"
+                                if not v148_ then
+                                    if v151_ == "Abyssal" then
+                                        v148_ = true
+                                    else
+                                        v148_ = false
+                                    end
+                                end
+                            end
+                        end
+                    end
+                    if v149_ then
+                        if v147_ and v148_ then
+                            if game:GetService("Players").LocalPlayer.leaderstats["C$"].Value < "750,000C$" then
+                                PancinganProgress:SetDesc("You Coins is Less than 750,000 to Buy Rod of The Depths")
+                            else
+                                PancinganProgress:SetDesc("Doing a Puzzle and Buying the Relic")
+                                local function v_u_163_(p152_)
+                                    local v153_, v154_, v155_ = ipairs(game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Inventory:GetChildren())
+                                    while true do
+                                        local v156_
+                                        v155_, v156_ = v153_(v154_, v155_)
+                                        if v155_ == nil then
+                                            break
+                                        end
+                                        if string.find(v156_.Name, "Enchant Relic") and (v156_:FindFirstChild("Mutation") and v156_.Mutation.Value == p152_) then
+                                            local v157_ = v156_.Name
+                                            local v158_, v159_, v160_ = ipairs(game.Players.LocalPlayer.Backpack:GetChildren())
+                                            while true do
+                                                local v161_
+                                                v160_, v161_ = v158_(v159_, v160_)
+                                                if v160_ == nil then
+                                                    break
+                                                end
+                                                if v161_:FindFirstChild("link") then
+                                                    local v162_ = tostring(v161_.link.Value):match("^%s*(.-)%s*$")
+                                                    if string.find(v161_.Name, "Enchant Relic") and v162_ == v157_ then
+                                                        v161_.Name = v162_
+                                                        return v161_.Name
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                    return nil
+                                end
+                                local function v_u_166_(p_u_164_)
+                                    pcall(function()
+                                        local v165_ = game.Players.LocalPlayer.Backpack:FindFirstChild(p_u_164_)
+                                        if v165_ then
+                                            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v165_)
+                                        else
+                                            print("Relic tidak ditemukan di Backpack.")
+                                        end
+                                    end)
+                                end
+                                local function v167_()
+                                    AbyssalTarok = false
+                                    HexedTarok = false
+                                    TPDepth = false
+                                    BuyRodDepth = false
+                                    while not (BuyRodDepth and (TPDepth and (AbyssalTarok and HexedTarok))) do
+                                        if TPDepth then
+                                            if TPDepth and not AbyssalTarok then
+                                                if (CFrame.new(1205.68042, - 716.498291, 1314.95325).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 5 then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1205.68042, - 716.498291, 1314.95325, - 0.39891386, - 7.99506026e-8, - 0.916988373, - 2.28649921e-9, 1, - 8.61935519e-8, 0.916988373, - 3.22871081e-8, - 0.39891386)
+                                                else
+                                                    v_u_166_(v_u_163_("Abyssal"))
+                                                    wait(2)
+                                                    game:GetService("ReplicatedStorage").packages.Net["RE/ActivatorClientActive"]:FireServer("Abyssal")
+                                                    wait(3)
+                                                    AbyssalTarok = true
+                                                end
+                                            elseif TPDepth and (AbyssalTarok and not HexedTarok) then
+                                                if (CFrame.new(1049.36633, - 632.940063, 1319.16992).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 5 then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1049.36633, - 632.940063, 1319.16992, 0.824049056, 4.00164435e-9, - 0.566518486, - 5.11433633e-8, 1, - 6.73287701e-8, 0.566518486, 8.44558699e-8, 0.824049056)
+                                                else
+                                                    v_u_166_(v_u_163_("Hexed"))
+                                                    wait(2)
+                                                    game:GetService("ReplicatedStorage").packages.Net["RE/ActivatorClientActive"]:FireServer("Hexed")
+                                                    wait(3)
+                                                    HexedTarok = true
+                                                end
+                                            elseif not BuyRodDepth and (TPDepth and (AbyssalTarok and HexedTarok)) then
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1703, - 903, 1443)
+                                                if game:GetService("Players").LocalPlayer.PlayerGui.ProximityPrompts:FindFirstChild("PromptTemplate") then
+                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.E, false, game)
+                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game)
+                                                elseif game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                                                    if game:GetService("Players").LocalPlayer.PlayerGui.over.prompt.confirm then
+                                                        game:GetService("GuiService").SelectedObject = game:GetService("Players").LocalPlayer.PlayerGui.over.prompt.confirm
+                                                    else
+                                                        game:GetService("GuiService").SelectedObject = nil
+                                                    end
+                                                    if game:GetService("GuiService").SelectedObject ~= game:GetService("Players").LocalPlayer.PlayerGui.over.prompt.confirm then
+                                                        return
+                                                    end
+                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+                                                end
+                                            end
+                                        elseif (CFrame.new(946, - 712, 1254).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 5 then
+                                            wait(10)
+                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(946, - 712, 1254)
+                                            wait(10)
+                                        else
+                                            wait(2)
+                                            TPDepth = true
+                                        end
+                                    end
+                                end
+                                if v_u_163_("Hexed") or v_u_163_("Abyssal") then
+                                    v167_()
+                                end
+                            end
+                        elseif v147_ then
+                            PancinganProgress:SetDesc("you dont have Abyssal Relic please use auto praiser at NPC section")
+                        elseif v148_ then
+                            PancinganProgress:SetDesc("you dont have Hexed Relic please use auto praiser at NPC section")
+                        else
+                            PancinganProgress:SetDesc("you dont have Abyssal&Hexed Relic please use auto praiser at NPC section")
+                        end
+                    else
+                        local v168_ = workspace:FindFirstChild("world") and (workspace.world:FindFirstChild("npcs") and workspace.world.npcs:FindFirstChild("Merlin"))
+                        if v168_ then
+                            v168_ = workspace.world.npcs.Merlin:FindFirstChild("Merlin")
+                        end
+                        if v168_ then
+                            wait(1)
+                            workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("power"):InvokeServer()
+                        else
+                            TeleportPlayer(CFrame.new(- 932, 224, - 988))
+                            repeat
+                                task.wait()
+                            until v168_
+                            TeleportPlayer(currentCFrame)
+                        end
+                    end
+                else
+                    VertigoBastiary = false
+                    ShrimpBastiary = false
+                    IsonadeBastiary = false
+                    if VertigoBastiary and (game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("Fangborn Gar") or (game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("Twilight Eel") or (game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("Abyssacuda") or (game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("Voidfin Mahi") or (game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("Rubber Ducky") or game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("The Depths Key")))))) then
+                        if game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("Night Shrimp") then
+                            if not game:GetService("ReplicatedStorage").playerstats[game.Players.LocalPlayer.Name].Bestiary:FindFirstChild("Isonade") then
+                                if game.Workspace.zones.fishing:FindFirstChild("Isonade") then
+                                    VertigoBastiary = true
+                                    PancinganProgress:SetDesc("Catching Isonade")
+                                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.zones.fishing.Isonade.Position + Vector3.new(25, 35, 25))
+                                    AlphaWolf()
+                                else
+                                    VertigoBastiary = false
+                                end
+                            end
+                        else
+                            PancinganProgress:SetDesc("Finding Night Shrimp at the Cage")
+                            VertigoBastiary = true
+                            deploycage = true
+                            crabCage = (game:GetService("Players").LocalPlayer.Character or game:GetService("Players").LocalPlayer.CharacterAdded:Wait()):FindFirstChild("Crab Cage") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Crab Cage")
+                            local v169_ = game.Players.LocalPlayer
+                            local v170_ = workspace.active:FindFirstChild(v169_.Name)
+                            if v170_ then
+                                local v171_ = v170_:FindFirstChild("Cage")
+                                local v172_ = v170_:FindFirstChild("Prompt")
+                                local v173_
+                                if v171_ then
+                                    v173_ = v171_:FindFirstChild("cage")
+                                else
+                                    v173_ = v171_
+                                end
+                                if v171_ and (v172_ and (v173_ and v172_.Enabled)) then
+                                    local v174_ = v169_.Character
+                                    if v174_ then
+                                        v174_ = v174_:FindFirstChild("HumanoidRootPart")
+                                    end
+                                    if v174_ then
+                                        v174_.CFrame = v173_.CFrame
+                                    end
+                                end
+                            end
+                            if crabCage and crabCage:FindFirstChild("Deploy") then
+                                if deploycage then
+                                    TeleportPlayer(CFrame.new(- 104.409004, - 733.530273, 1214.26428, - 0.965907991, 2.03509511e-8, - 0.258885652, 1.94754382e-8, 1, 5.94652905e-9, 0.258885652, 7.01888547e-10, - 0.965907991))
+                                    EquipItem("Crab Cage")
+                                    wait(0.5)
+                                    crabCage.Deploy:FireServer(CFrame.new(- 104.409004, - 733.530273, 1214.26428, - 0.96590966, - 0, - 0.258879483, - 0, 1.00000012, - 0, 0.258879483, - 0, - 0.96590966))
+                                    wait(2)
+                                    TeleportPlayer(CFrame.new(- 101.251831, - 733.449646, 1211.5575, - 0.707020164, - 2.5517048e-8, - 0.707193434, - 1.87845384e-8, 1, - 1.7302197e-8, 0.707193434, 1.05130027e-9, - 0.707020164))
+                                    EquipItem("Crab Cage")
+                                    wait(0.5)
+                                    crabCage.Deploy:FireServer(CFrame.new(- 101.251831, - 733.449646, 1211.5575, - 0.70702672, - 0, - 0.707186937, - 0, 1.00000012, - 0, 0.707186937, - 0, - 0.70702672))
+                                    wait(2)
+                                    TeleportPlayer(CFrame.new(- 99.5361481, - 734.008911, 1208.71252, - 0.0172876865, 2.90788282e-8, - 0.999850571, - 5.95624492e-8, 1, 3.0113025e-8, 0.999850571, 6.00741288e-8, - 0.0172876865))
+                                    EquipItem("Crab Cage")
+                                    wait(0.5)
+                                    crabCage.Deploy:FireServer(CFrame.new(- 99.5361481, - 734.008911, 1208.71252, - 0.0173340254, - 0, - 0.999849796, - 0, 1.00000012, - 0, 0.999849796, - 0, - 0.0173340254))
+                                    wait(2)
+                                    TeleportPlayer(CFrame.new(- 100.482239, - 734.49939, 1205.75488, 0.601927161, 2.40257347e-9, - 0.798551023, 3.76026357e-8, 1, 3.13525632e-8, 0.798551023, - 4.8899583e-8, 0.601927161))
+                                    EquipItem("Crab Cage")
+                                    wait(0.5)
+                                    crabCage.Deploy:FireServer(CFrame.new(- 100.482239, - 734.49939, 1205.75488, 0.601926982, - 0, - 0.798551202, - 0, 1.00000012, - 0, 0.798551202, - 0, 0.601926982))
+                                    wait(2)
+                                    TeleportPlayer(CFrame.new(- 104.688934, - 732.778625, 1203.41101, 0.788078368, 9.05711772e-9, - 0.615574956, - 1.29552404e-8, 1, - 1.87243976e-9, 0.615574956, 9.45055056e-9, 0.788078368))
+                                    wait(0.5)
+                                    EquipItem("Crab Cage")
+                                    crabCage.Deploy:FireServer(CFrame.new(- 104.688934, - 732.778625, 1203.41101, 0.788078368, 9.05711772e-9, - 0.615574956, - 1.29552404e-8, 1, - 1.87243976e-9, 0.615574956, 9.45055056e-9, 0.788078368))
+                                    wait(2)
+                                    deploycage = false
+                                end
+                            else
+                                deploycage = false
+                            end
+                        end
+                    else
+                        PancinganProgress:SetDesc("Completting Vertigo Bastiary")
+                        if (CFrame.new(- 104.767387, - 731.944275, 1208.14526).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 5 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(- 104.767387, - 731.944275, 1208.14526, - 0.895453691, 5.20671684e-9, 0.445154667, 4.02881142e-8, 1, 6.93453899e-8, - 0.445154667, 8.0030027e-8, - 0.895453691)
+                        else
+                            AlphaWolf()
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
+v61_.NPC:AddButton({
+    Title = "Infinite Range NPC Interaction",
+    Description = "Use this to access NPC functions anywhere for Appraise, Merchant, Merlin, and Jack Marrow.",
+    Callback = function()
+        local v175_ = {
+            Merlin = CFrame.new(- 932, 224, - 988),
+            ["Jack Marrow"] = CFrame.new(- 2825, 214, 1516),
+            Appraiser = CFrame.new(444, 151, 210),
+            ["Marc Merchant"] = CFrame.new(467, 151, 231)
+        }
+        local v176_ = game.Players.LocalPlayer
+        local v_u_177_ = (v176_.Character or v176_.CharacterAdded:Wait()):WaitForChild("HumanoidRootPart")
+        local v178_ = v_u_177_.CFrame
+        local function v186_(p179_)
+            local v180_ = workspace.CurrentCamera
+            local _ = v180_.CameraType
+            local _ = v180_.CFrame
+            local v181_
+            if p179_.Parent:IsA("Model") and p179_.Parent:FindFirstChild("Head") then
+                v181_ = p179_.Parent.Head
+            else
+                if not p179_.Parent:IsA("Part") then
+                    return
+                end
+                v181_ = p179_.Parent
+            end
+            local v182_ = p179_.Enabled
+            local v183_ = p179_.HoldDuration
+            local v184_ = p179_.RequiresLineOfSight
+            local v185_ = p179_.MaxActivationDistance
+            p179_.Enabled = true
+            p179_.MaxActivationDistance = math.huge
+            p179_.RequiresLineOfSight = false
+            p179_.HoldDuration = 0
+            v180_.CameraType = Enum.CameraType.Scriptable
+            v180_.CFrame = CFrame.lookAt(v180_.CFrame.Position, v181_.Position)
+            task.wait(0.05)
+            p179_:InputHoldBegin()
+            task.wait(0.05)
+            p179_:InputHoldEnd()
+            task.wait(0.5)
+            v180_.CameraType = Enum.CameraType.Custom
+            v180_.CFrame = CFrame.new(v_u_177_.Position)
+            p179_.Enabled = v182_
+            p179_.HoldDuration = v183_
+            p179_.RequiresLineOfSight = v184_
+            p179_.MaxActivationDistance = v185_
+        end
+        local v187_, v188_, v189_ = pairs(v175_)
+        local v190_ = {}
+        local function v192_(p191_)
+            if p191_ then
+                p191_ = p191_.ModelStreamingMode == Enum.ModelStreamingMode.Persistent
+            end
+            return p191_
+        end
+        while true do
+            v189_ = v187_(v188_, v189_)
+            if v189_ == nil then
+                break
+            end
+            v190_[v189_] = false
+        end
+        local v193_, v194_, v195_ = pairs(v175_)
+        while true do
+            local v196_
+            v195_, v196_ = v193_(v194_, v195_)
+            if v195_ == nil then
+                break
+            end
+            TeleportPlayer(v196_)
+            task.wait(2)
+            local v197_ = workspace.world.npcs:FindFirstChild(v195_)
+            if v197_ then
+                v197_.ModelStreamingMode = Enum.ModelStreamingMode.Persistent
+                if v192_(v197_) then
+                    local v198_ = v197_:FindFirstChildWhichIsA("ProximityPrompt", true)
+                    if v198_ then
+                        v186_(v198_)
+                        v190_[v195_] = true
+                    end
+                else
+                    task.wait(2)
+                end
+            else
+                warn(v195_ .. " not found in the workspace.world.npcs after teleportation.")
+            end
+        end
+        local v199_, v200_, v201_ = pairs(v190_)
+        local v202_ = true
+        while true do
+            local v203_
+            v201_, v203_ = v199_(v200_, v201_)
+            if v201_ == nil then
+                break
+            end
+            if not v203_ then
+                v202_ = false
+                break
+            end
+        end
+        if v202_ then
+            v_u_57_:Notify({
+                Title = "Nduc Hub",
+                Content = "NPCs can now be accessed from an unlimited range for various interactions, such as Buying Luck/Relics, Selling Fish, Appraising Items, and Repairing Maps.",
+                Duration = math.huge
+            })
+        end
+        task.wait(2)
+        TeleportPlayer(v178_)
+    end
+})
+local function v_u_208_()
+    local v204_, v205_, v206_ = ipairs(workspace.world.npcs:GetChildren())
+    while true do
+        local v207_
+        v206_, v207_ = v204_(v205_, v206_)
+        if v206_ == nil then
+            break
+        end
+        if v207_.Name:find("Merchant") and v207_:FindFirstChild("merchant") then
+            return v207_
+        end
+    end
+    return nil
+end
+v61_.NPC:AddSection("[ Appraiser ]")
+local v_u_209_ = {["Destroyed Fossil"] = 40,["Scrap Metal"] = 40,["Deep-sea Dragonfish"] = 30,["Deep-sea Hatchetfish"] = 20,["Depth Octopus"] = 50,["Frilled Shark"] = 80,["Luminescent Minnow"] = 1,["Three-eyed Fish"] = 60,["Black Dragon Fish"] = 320,["Goblin Shark"] = 250,["Spider Crab"] = 80,["Small Spine Chimera"] = 1000,
+Nautilus = 1800,["Ancient Eel"] = 1700,["Mutated Shark"] = 3000,["Sea Snake"] = 670,["Barreleye Fish"] = 120,["Ancient Depth Serpent"] = 6700,["Emperor Jellyfish"] = 8000,
+Angelfish = 20,
+Oyster = 5,["Sand Dollar"] = 2,["White Perch"] = 12,["Smallmouth Bass"] = 17,["Great Hammerhead Shark"] = 5000,
+Seaweed = 3,
+Napoleonfish = 350,["Sea Bass"] = 60,["Midnight Axolotl"] = 30,
+Trout = 50,
+Rabbitfish = 60,["Swamp Bass"] = 60,["Captain\'s Goldfish"] = 25,["Largemouth Bass"] = 45,
+Walleye = 40,["Brine Phantom"] = 6500,
+Rock = 210,["Glacier Pike"] = 35,["Arctic Char"] = 60,["Manta Ray"] = 10000,
+Lobster = 28,
+Blackfish = 20,["Brine Shrimp"] = 3,["Globe Jellyfish"] = 240,
+Pollock = 50,
+Chinfish = 40,
+Bowfin = 60,
+Cod = 100,["Sea Turtle"] = 1500,
+Driftwood = 6,
+Pumpkinseed = 5,["Cockatoo Squid"] = 20,
+Arapaima = 2000,
+Nessie = 40000,
+Pyrogrub = 600,
+Lurkerfish = 20,
+Stalactite = 130,
+Bone = 25,["Mahi Mahi"] = 150,
+Axolotl = 15,["Grey Carp"] = 70,
+Goldfish = 7,
+Sunfish = 10000,
+Zombiefish = 30,["Phantom Ray"] = 60,["Voidfin Mahi"] = 155,["Umbral Shark"] = 1550,["Buccaneer Barracuda"] = 250,
+Boot = 12,
+Eel = 45,
+Spiderfish = 10,["Bluefin Tuna"] = 2200,
+Eyefestation = 6500,["Carbon Crate"] = 160,["Corsair Grouper"] = 200,
+Mackerel = 40,["Night Shrimp"] = 2,
+Stingray = 300,
+Isonade = 13000,["Ribbon Eel"] = 150,
+Minnow = 6,["Crown Bass"] = 60,
+Alligator = 3000,["Quality Bait Crate"] = 120,["Enchant Relic"] = 210,
+Olm = 4,["Shipwreck Barracuda"] = 300,["Spectral Serpent"] = 130000,["Rockstar Hermit Crab"] = 12,
+Banditfish = 200,["Swamp Scallop"] = 14,["Longtail Bass"] = 40,
+Bluefish = 9,
+Prawn = 5,
+Ringle = 4,["Horseshoe Crab"] = 90,
+Scallop = 5,["Nurse Shark"] = 1500,
+Bream = 27,
+Abyssacuda = 110,["Scurvy Sailfish"] = 700,
+Snook = 70,
+Wiifish = 400,
+Crab = 14,["Whiptail Catfish"] = 30,
+Oarfish = 2500,["Common Crate"] = 80,
+Haddock = 40,["Slate Tuna"] = 600,
+Porgy = 30,
+Shrimp = 2,["Bait Crate"] = 80,["Skipjack Tuna"] = 160,["Bull Shark"] = 1300,["Ember Snapper"] = 120,
+Anchovy = 3,
+Log = 75,["White Bass"] = 25,
+Coelacanth = 100,["Barbed Shark"] = 9500,["Twilight Eel"] = 200,["Fish Barrel"] = 150,["Shortfin Mako Shark"] = 1000,
+Lingcod = 140,
+Sturgeon = 800,
+Anglerfish = 20,
+Gazerfish = 140,["Red Snapper"] = 70,["Whale Shark"] = 100000,["Obsidian Salmon"] = 180,
+Tire = 110,["Fangborn Gar"] = 380,["Obsidian Swordfish"] = 2500,
+Swordfish = 2500,
+Mullet = 20,
+Salmon = 100,
+Sailfish = 600,["Ember Perch"] = 15,["Cutlass Fish"] = 250,["Galleon Goliath"] = 200,
+Sardine = 3,
+Pike = 35,["Pond Emperor"] = 2500,
+Pufferfish = 20,["Cookiecutter Shark"] = 15,
+Voltfish = 16,["Redeye Bass"] = 15,["Golden Seahorse"] = 8,["Sockeye Salmon"] = 70,
+Basalt = 210,["Magma Tang"] = 30,
+Skelefish = 10,
+Carp = 50,["Suckermouth Catfish"] = 170,
+Squid = 25,
+Halibut = 2000,
+Ghoulfish = 120,
+Glassfish = 4,
+Dolphin = 2000,
+Sawfish = 6000,["Sea Pickle"] = 10,["Great White Shark"] = 12000,
+Clownfish = 6,["Dweller Catfish"] = 160,
+Perch = 12,
+Chub = 30,["Sea Urchin"] = 9,["Cursed Eel"] = 250,["Fungal Cluster"] = 9,
+Herring = 11,
+Grayling = 20,["Blue Tang"] = 15,
+Flounder = 55,
+Butterflyfish = 15,["Yellow Boxfish"] = 20,["Dumbo Octopus"] = 40,["Mythic Fish"] = 14,
+Catfish = 150,
+Sweetfish = 5,
+Lapisjack = 400,["Sea Mine"] = 3250,["Red Tang"] = 15,
+Gudgeon = 3,["Whisker Bill"] = 1000,
+Burbot = 35,
+Ice = 60,["Colossal Squid"] = 12000,["Reefrunner Snapper"] = 250,
+Handfish = 60,["Flying Fish"] = 50,
+Bluegill = 6,["Red Drum"] = 25,["Coral Geode"] = 180,
+Amberjack = 400,
+Trumpetfish = 20,
+Mussel = 2,
+Glacierfish = 600,["Alligator Gar"] = 450,
+Moonfish = 5000,["Yellowfin Tuna"] = 1360,["Candy Fish"] = 10,["Volcanic Geode"] = 200,
+Barracuda = 110,["Rubber Ducky"] = 7,["Marsh Gar"] = 380,["King Oyster"] = 10,["Keepers Guardian"] = 400,["Mushgrove Crab"] = 14,["Pale Tang"] = 15,["Chinook Salmon"] = 400,["Golden Smallmouth Bass"] = 45}
+local v_u_210_ = 0.8
+local v_u_211_ = {}
+function getAllOwnedFish()
+    local v212_, v213_, v214_ = ipairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren())
+    local v215_ = {}
+    while true do
+        local v216_
+        v214_, v216_ = v212_(v213_, v214_)
+        if v214_ == nil then
+            break
+        end
+        if v216_:FindFirstChild("fishscript") then
+            v215_[v216_.Name] = true
+        end
+    end
+    local v217_, v218_, v219_ = pairs(v215_)
+    local v220_ = {}
+    while true do
+        v219_ = v217_(v218_, v219_)
+        if v219_ == nil then
+            break
+        end
+        table.insert(v220_, v219_)
+    end
+    return v220_
+end
+local v221_ = getAllOwnedFish()
+local v_u_222_ = {}
+v61_.NPC:AddDropdown("MutationListDropdown", {
+    Title = "Mutation Target",
+    Description = "Select Mutation Target",
+    Values = {
+        "Abyssal",
+        "Albino",
+        "Darkened",
+        "Electric",
+        "Frozen",
+        "Ghastly",
+        "Glossy",
+        "Hexed",
+        "Midas",
+        "Mosaic",
+        "Mythical",
+        "Negative",
+        "Silver",
+        "Sinister",
+        "Translucent",
+        "Sunken"
+    },
+    Multi = true,
+    Default = {}
+}):OnChanged(function(p223_)
+    local v224_ = next
+    local v225_ = nil
+    local v226_ = {}
+    while true do
+        local v227_
+        v225_, v227_ = v224_(p223_, v225_)
+        if v225_ == nil then
+            break
+        end
+        if v227_ then
+            table.insert(v226_, v225_)
+        end
+    end
+    v_u_222_ = v226_
+end)
+local v_u_228_ = v61_.NPC:AddDropdown("FishSelection", {
+    Title = "Selected Fish",
+    Description = "Select Fish Target",
+    Values = v221_,
+    Multi = true,
+    Default = {}
+})
+local v229_ = v_u_228_
+v_u_228_.OnChanged(v229_, function(p230_)
+    if # p230_ > 0 then
+        local v231_ = p230_[1]
+        local _ = game.Players.LocalPlayer
+        local v232_, v233_, v234_ = ipairs(game.Players.LocalPlayer.Backpack:GetChildren())
+        while true do
+            local v235_
+            v234_, v235_ = v232_(v233_, v234_)
+            if v234_ == nil then
+                break
+            end
+            if v235_.Name == v231_ then
+                game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(v235_)
+                break
+            end
+        end
+    end
+end)
+local v_u_236_ = v61_.NPC:AddToggle("AutoToggle", {
+    Title = "Auto Appraise",
+    Default = false
+})
+local v237_ = v_u_236_
+v_u_236_.OnChanged(v237_, function(_)
+end)
+v_u_62_.AutoToggle:SetValue(false)
+local v_u_238_ = v61_.NPC:AddToggle("AppraiseAll", {
+    Title = "Appraise All Selected Fish",
+    Default = false
+})
+local v239_ = v_u_238_
+v_u_238_.OnChanged(v239_, function(_)
+end)
+v_u_62_.AppraiseAll:SetValue(false)
+local v240_ = v61_.NPC:AddDropdown("WeightTarget", {
+    Title = "Weight Target",
+    Description = "Select Weight Target",
+    Values = {
+        "Big",
+        "Giant"
+    },
+    Multi = true,
+    Default = {}
+})
+local v_u_241_ = {}
+v240_:OnChanged(function(p242_)
+    v_u_241_ = {}
+    local v243_ = next
+    local v244_ = nil
+    while true do
+        local v245_
+        v244_, v245_ = v243_(p242_, v244_)
+        if v244_ == nil then
+            break
+        end
+        if v245_ then
+            table.insert(v_u_241_, v244_)
+        end
+    end
+end)
+local v_u_246_ = v61_.NPC:AddToggle("WeightToggle", {
+    Title = "Weight Filter Toggle",
+    Default = false
+})
+local v247_ = v_u_246_
+v_u_246_.OnChanged(v247_, function(_)
+end)
+v_u_62_.WeightToggle:SetValue(false)
+local v_u_248_ = v61_.NPC:AddToggle("MutationToggle", {
+    Title = "Mutation Toggle",
+    Default = false
+})
+local v249_ = v_u_248_
+v_u_248_.OnChanged(v249_, function(_)
+end)
+v_u_62_.MutationToggle:SetValue(false)
+local v_u_250_ = v61_.NPC:AddToggle("SparklingToggle", {
+    Title = "Require Sparkling",
+    Default = false
+})
+local v251_ = v_u_250_
+v_u_250_.OnChanged(v251_, function(_)
+    v_u_211_ = {}
+end)
+v_u_62_.SparklingToggle:SetValue(false)
+local v_u_252_ = v61_.NPC:AddToggle("ShinyToggle", {
+    Title = "Require Shiny",
+    Default = false
+})
+local v253_ = v_u_252_
+v_u_252_.OnChanged(v253_, function(_)
+    v_u_211_ = {}
+end)
+v_u_62_.ShinyToggle:SetValue(false)
+function getHeldFish()
+    local v254_, v255_, v256_ = ipairs(game.Players.LocalPlayer.Character:GetChildren())
+    while true do
+        local v257_
+        v256_, v257_ = v254_(v255_, v256_)
+        if v256_ == nil then
+            break
+        end
+        if v257_:IsA("Tool") then
+            return v257_
+        end
+    end
+    return nil
+end
+function switchFish()
+    local v258_, v259_, v260_ = ipairs(game.Players.LocalPlayer.Backpack:GetChildren())
+    while true do
+        local v261_
+        v260_, v261_ = v258_(v259_, v260_)
+        if v260_ == nil then
+            break
+        end
+        if table.find(v_u_228_.Value, v261_.Name) and not table.find(v_u_211_, v261_) then
+            print("Equipping:", v261_.Name)
+            game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(v261_)
+            return
+        end
+    end
+end
+function getWeightCategory(p262_)
+    local v263_ = p262_.Name
+    local v264_ = p262_.link.Value.Weight.Value
+    local v265_ = v_u_209_[v263_] / 10
+    return v_u_209_[v263_] / 10 * 1.99 >= v264_ and (v265_ < v264_ and "Big" or "Regular") or "Giant"
+end
+game.Players.LocalPlayer.Backpack.ChildAdded:Connect(function(p266_)
+    if p266_:isA("Tool") and not p266_:FindFirstChild("link") then
+        repeat
+            task.wait()
+        until p266_:FindFirstChild("link")
+        local v267_ = getHeldFish()
+        if v267_ then
+            v267_.Parent = game.Players.LocalPlayer.Backpack
+        end
+        if v_u_236_.Value then
+            game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(p266_)
+        end
+    end
+end)
+function applyFilter(p268_)
+    local v269_ = p268_.link.Value
+    if v_u_246_.Value and (next(v_u_241_) ~= nil and not table.find(v_u_241_, getWeightCategory(p268_))) then
+        return false
+    end
+    if v_u_250_.Value and not v269_:FindFirstChild("Sparkling") then
+        return false
+    end
+    if v_u_252_.Value and not v269_:FindFirstChild("Shiny") then
+        return false
+    end
+    if not v_u_248_.Value or next(v_u_222_) == nil then
+        return true
+    end
+    local v270_ = nil
+    if v269_ then
+        v270_ = v269_:FindFirstChild("Mutation")
+    else
+        print("Stat Folder Mutation not Found")
+    end
+    local v271_ = table.find(v_u_222_, "Any")
+    if not v270_ then
+        return v271_ and true or false
+    end
+    if v271_ then
+        return true
+    end
+    local v272_, v273_, v274_ = ipairs(v_u_222_)
+    while true do
+        local v275_
+        v274_, v275_ = v272_(v273_, v274_)
+        if v274_ == nil then
+            break
+        end
+        if v275_ == v270_.Value then
+            return true
+        end
+    end
+    return false
+end
+function AutoAppraise()
+    if v_u_236_.Value then
+        local v276_ = getHeldFish()
+        if v276_ then
+            if applyFilter(v276_) then
+                if v_u_238_.Value and not table.find(v_u_211_, v276_) then
+                    table.insert(v_u_211_, v276_)
+                    switchFish()
+                end
+                return
+            end
+            local v277_, v278_ = pcall(function()
+                workspace.world.npcs.Appraiser.appraiser.appraise:InvokeServer()
+            end)
+            if not v277_ then
+                print("Error appraising fish:", v278_)
+            end
+            task.wait(tonumber(v_u_210_))
+        elseif not v276_ and v_u_238_.Value then
+            switchFish()
+        end
+    end
+end
+v101_.Heartbeat:Connect(AutoAppraise)
+local v279_ = v61_.NPC:AddSection("[ Merchant ]")
+v279_:AddButton({
+    Title = "Sell all your Fish in Inventory",
+    Description = "This will Sell Fish in Inventory at Merchant",
+    Callback = function()
+        v_u_60_:Dialog({
+            Title = "Sell all your fish?",
+            Content = "Do you really want to sell them all?",
+            Buttons = {
+                {
+                    Title = "Yes!",
+                    Callback = function()
+                        local v_u_280_ = v_u_208_()
+                        if v_u_280_ then
+                            local _, _ = pcall(function()
+                                v_u_280_.merchant.sellall:InvokeServer()
+                            end)
+                        else
+                            v_u_57_:Notify({
+                                Title = "Nduc Hub",
+                                Content = "No Merchant Nearby, Please Active Infinite Range NPC Function to bypass range",
+                                Duration = 20
+                            })
+                        end
+                    end
+                },
+                {
+                    Title = "No",
+                    Callback = function()
+                    end
+                }
+            }
+        })
+    end
+})
+v279_:AddButton({
+    Title = "Sell Equipped Fish",
+    Description = "This will Equipped Fish at Merchant",
+    Callback = function()
+        v_u_60_:Dialog({
+            Title = "Sell Equipped fish?",
+            Content = "Do you really want to sell this fish?",
+            Buttons = {
+                {
+                    Title = "Yes!",
+                    Callback = function()
+                        local v_u_281_ = v_u_208_()
+                        if v_u_281_ then
+                            local _, _ = pcall(function()
+                                v_u_281_.merchant.sell:InvokeServer()
+                            end)
+                        else
+                            v_u_57_:Notify({
+                                Title = "Nduc Hub",
+                                Content = "No Merchant Nearby, Please Active Infinite Range NPC Function to bypass range",
+                                Duration = 20
+                            })
+                        end
+                    end
+                },
+                {
+                    Title = "No",
+                    Callback = function()
+                    end
+                }
+            }
+        })
+    end
+})
+v279_:AddSlider("DistanceFarm", {
+    Title = "Auto Sell Cooldown",
+    Description = "This Auto Sell Cooldown or Wait section to sell your Fish",
+    Default = _G.Settings.Main["Sell Wait"],
+    Min = 5,
+    Max = 60,
+    Rounding = 0
+})
+v_u_62_.DistanceFarm:OnChanged(function()
+    _G.Settings.Main["Sell Wait"] = v_u_62_.DistanceFarm.Value
+    SaveSettings()
+end)
+v279_:AddToggle("merchanttoggleall", {
+    Title = "Sell All Fish Toggle Version",
+    Default = false
+})
+v_u_62_.merchanttoggleall:OnChanged(function()
+    _G.ToggleSellAll = v_u_62_.merchanttoggleall.Value
+end)
+puki = false
+spawn(function()
+    while task.wait() do
+        if _G.ToggleSellAll then
+            pcall(function()
+                local v_u_282_ = v_u_208_()
+                if v_u_282_ then
+                    local _, _ = pcall(function()
+                        task.wait(_G.Settings.Main["Sell Wait"])
+                        v_u_282_.merchant.sellall:InvokeServer()
+                    end)
+                else
+                    if not puki then
+                        v_u_57_:Notify({
+                            Title = "Nduc Hub",
+                            Content = "No Merchant Nearby, Please Active Infinite Range NPC Function to bypass range",
+                            Duration = 5
+                        })
+                        puki = true
+                    end
+                    wait(5)
+                    puki = false
+                end
+            end)
+        end
+    end
+end)
+v279_:AddToggle("merchanttoggle", {
+    Title = "Sell Equipped Fish Toggle Version",
+    Default = false
+})
+v_u_62_.merchanttoggle:OnChanged(function()
+    _G.ToggleSell = v_u_62_.merchanttoggle.Value
+end)
+puki = false
+spawn(function()
+    while task.wait() do
+        if _G.ToggleSell then
+            pcall(function()
+                local v_u_283_ = v_u_208_()
+                if v_u_283_ then
+                    local _, _ = pcall(function()
+                        v_u_283_.merchant.sell:InvokeServer()
+                    end)
+                else
+                    if not puki then
+                        v_u_57_:Notify({
+                            Title = "Nduc Hub",
+                            Content = "No Merchant Nearby, Please Active Infinite Range NPC Function to bypass range",
+                            Duration = 5
+                        })
+                        puki = true
+                    end
+                    wait(5)
+                    puki = false
+                end
+            end)
+        end
+    end
+end)
+local v284_ = v61_.NPC:AddSection("[ Jack Marrow ]")
+local v_u_285_ = game:GetService("Players").LocalPlayer
+local v286_ = v_u_285_
+v_u_285_.WaitForChild(v286_, "Backpack")
+v284_:AddToggle("AutoTreasure", {
+    Title = "Auto Find Treasure",
+    Default = _G.Treasure
+})
+v_u_62_.AutoTreasure:OnChanged(function()
+    _G.Treasure = v_u_62_.AutoTreasure.Value
+end)
+spawn(function()
+    while task.wait() do
+        if _G.Treasure then
+            pcall(function()
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Treasure Map") then
+                    if EquipTreasureMap() then
+                        RepairTreasureMap()
+                        TeleportToTreasure()
+                        ActivateNearestChestPrompt()
+                    end
+                    wait(1)
+                end
+            end)
+        end
+    end
+end)
+local v_u_287_ = false
+function EquipTreasureMap()
+    local v288_ = game.Players.LocalPlayer.Backpack:FindFirstChild("Treasure Map")
+    if v288_ then
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(v288_)
+        return true
+    else
+        warn("No Treasure Map found in backpack.")
+        return false
+    end
+end
+function RepairTreasureMap()
+    if not v_u_287_ then
+        local v289_ = CFrame.new(- 2825, 214, 1516)
+        TeleportPlayer(v289_)
+        v_u_287_ = true
+    end
+    local v290_ = workspace.world.npcs:FindFirstChild("Jack Marrow")
+    while not v290_ do
+        wait(0.5)
+        v290_ = workspace.world.npcs:FindFirstChild("Jack Marrow")
+    end
+    v290_.treasure.repairmap:InvokeServer()
+    wait(1)
+    v_u_287_ = false
+end
+function TeleportToTreasure()
+    local v291_, v292_, v293_ = v_u_285_.PlayerGui["Treasure Map"].Main.CoordinatesLabel.Text:match("X ([%d.-]+), Y ([%d.-]+), Z ([%d.-]+)")
+    if v291_ and (v292_ and v293_) then
+        local v294_ = Vector3.new(tonumber(v291_), tonumber(v292_), tonumber(v293_))
+        TeleportPlayer(CFrame.new(v294_))
+    else
+        warn("Failed to parse coordinates from text.")
+    end
+end
+function ActivateNearestChestPrompt()
+    local v295_ = math.huge
+    local v296_ = v_u_285_.Character.PrimaryPart.Position
+    local v297_, v298_, v299_ = pairs(workspace.world.chests:GetChildren())
+    local v300_ = nil
+    while true do
+        local v301_
+        v299_, v301_ = v297_(v298_, v299_)
+        if v299_ == nil then
+            break
+        end
+        if v301_:FindFirstChild("ProximityPrompt") then
+            local v302_ = (v301_.Position - v296_).Magnitude
+            if v302_ < v295_ then
+                v300_ = v301_.ProximityPrompt
+                v295_ = v302_
+            end
+        end
+    end
+    if v300_ then
+        fireproximityprompt(v300_, 1, true)
+    else
+        warn("No Treasure Chest ProximityPrompt found.")
+    end
+end
+local v303_ = v61_.NPC:AddSection("[ Merlin ]")
+v303_:AddButton({
+    Title = "Buy Relic C$ 11,000",
+    Description = "",
+    Callback = function()
+        local v304_ = workspace:FindFirstChild("world") and (workspace.world:FindFirstChild("npcs") and workspace.world.npcs:FindFirstChild("Merlin"))
+        if v304_ then
+            v304_ = workspace.world.npcs.Merlin:FindFirstChild("Merlin")
+        end
+        if v304_ then
+            workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("power"):InvokeServer()
+        else
+            TeleportPlayer(CFrame.new(- 932, 224, - 988))
+            repeat
+                task.wait()
+            until v304_
+            TeleportPlayer(currentCFrame)
+        end
+    end
+})
+v303_:AddButton({
+    Title = "Buy Luck C$ 5,000",
+    Description = "",
+    Callback = function()
+        local v305_ = workspace:FindFirstChild("world") and (workspace.world:FindFirstChild("npcs") and workspace.world.npcs:FindFirstChild("Merlin"))
+        if v305_ then
+            v305_ = workspace.world.npcs.Merlin:FindFirstChild("Merlin")
+        end
+        if v305_ then
+            workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("luck"):InvokeServer()
+        else
+            TeleportPlayer(CFrame.new(- 932, 224, - 988))
+            repeat
+                task.wait()
+            until v305_
+            TeleportPlayer(currentCFrame)
+        end
+    end
+})
+local v306_ = v61_.Teleport:AddSection("[ Location ]")
+v306_:AddDropdown("TPLocation", {
+    Title = "Select Location to Teleport",
+    Values = v44_,
+    Multi = false,
+    Default = _G.Settings.Main.SelectIslandTP
+})
+v_u_62_.TPLocation:OnChanged(function()
+    _G.Settings.Main.SelectIslandTP = v_u_62_.TPLocation.Value
+    SaveSettings()
+end)
+v306_:AddButton({
+    Title = "Teleport to selected location",
+    Description = "",
+    Callback = function()
+        local v307_ = v_u_33_[_G.Settings.Main.SelectIslandTP]
+        if v307_ then
+            TeleportPlayer(v307_, CFrame.new(0, 0, 0))
+        end
+    end
+})
+local v308_ = v61_.Teleport:AddSection("[ Sub-Location ]")
+v308_:AddDropdown("SubLocation", {
+    Title = "Select Sub-Location to Teleport",
+    Values = v52_,
+    Multi = false,
+    Default = _G.Settings.Main.SelectSubTP
+})
+v_u_62_.SubLocation:OnChanged(function()
+    _G.Settings.Main.SelectSubTP = v_u_62_.SubLocation.Value
+    SaveSettings()
+end)
+v308_:AddButton({
+    Title = "Teleport to selected Sub-location",
+    Description = "",
+    Callback = function()
+        local v309_ = v_u_34_[_G.Settings.Main.SelectSubTP]
+        if v309_ then
+            TeleportPlayer(v309_, CFrame.new(0, 0, 0))
+        end
+    end
+})
+local v310_ = v61_.Teleport:AddSection("[ NPC Location ]")
+v310_:AddDropdown("NPCLocation", {
+    Title = "Select NPC Location to Teleport",
+    Values = v56_,
+    Multi = false,
+    Default = _G.Settings.Main.SelectNPCTP
+})
+v_u_62_.NPCLocation:OnChanged(function()
+    _G.Settings.Main.SelectNPCTP = v_u_62_.NPCLocation.Value
+    SaveSettings()
+end)
+v310_:AddButton({
+    Title = "Teleport to selected NPC Location",
+    Description = "",
+    Callback = function()
+        local v311_ = v_u_32_[_G.Settings.Main.SelectNPCTP]
+        if v311_ then
+            TeleportPlayer(v311_, CFrame.new(0, 0, 0))
+        end
+    end
+})
+local v312_ = v61_.Teleport:AddSection("[ ROD Location ]")
+v312_:AddDropdown("RodLocation", {
+    Title = "Select ROD Location to Teleport",
+    Values = v48_,
+    Multi = false,
+    Default = _G.Settings.Main.SelectRodTP
+})
+v_u_62_.RodLocation:OnChanged(function()
+    _G.Settings.Main.SelectRodTP = v_u_62_.RodLocation.Value
+    SaveSettings()
+end)
+v312_:AddButton({
+    Title = "Teleport to selected ROD Location",
+    Description = "",
+    Callback = function()
+        local v313_ = v_u_35_[_G.Settings.Main.SelectRodTP]
+        if v313_ then
+            TeleportPlayer(v313_, CFrame.new(0, 0, 0))
+        end
+    end
+})
+local v314_ = v61_.Teleport:AddSection("[ Totem Location ]")
+v314_:AddDropdown("TotemLocation", {
+    Title = "Select Totem Location to Teleport",
+    Values = v40_,
+    Multi = false,
+    Default = _G.Settings.Main.SelectTotemTP
+})
+v_u_62_.TotemLocation:OnChanged(function()
+    _G.Settings.Main.SelectTotemTP = v_u_62_.TotemLocation.Value
+    SaveSettings()
+end)
+v314_:AddButton({
+    Title = "Teleport to selected ROD Location",
+    Description = "",
+    Callback = function()
+        local v315_ = v_u_36_[_G.Settings.Main.SelectTotemTP]
+        if v315_ then
+            TeleportPlayer(v315_, CFrame.new(0, 0, 0))
+        end
+    end
+})
+local _ = v_u_57_.Options
+v58_:IgnoreThemeSettings()
+v58_:SetIgnoreIndexes({})
+v59_:BuildInterfaceSection(v61_.Settings)
+v58_:BuildConfigSection(v61_.Settings)
+local v316_ = v_u_60_
+v_u_60_.SelectTab(v316_, 1)
+local v317_ = v_u_57_
+v_u_57_.Notify(v317_, {
+    Title = "Nduc Hub",
+    Content = "The script has been loaded.",
+    Duration = 3
+})
+v58_:LoadAutoloadConfig()
